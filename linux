@@ -1,0 +1,3 @@
+runs the previous command using Sudo:
+sudo !!
+
