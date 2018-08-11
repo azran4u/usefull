@@ -1,3 +1,8 @@
 runs the previous command using Sudo:
 sudo !!
 
+# delete a folder recursively
+rm -R -f
+
+# find folder
+sudo find / -type d -iname 'ansible'
