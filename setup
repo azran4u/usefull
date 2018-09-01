@@ -1,35 +1,43 @@
----
+# run all commands as root
+sudo -s
+
 # update yum
-sudo yum -y update
+yum -y update
 
 # install pip
-sudo yum -y install python-pip
-sudo curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
-sudo python get-pip.py
-sudo pip install packaging
+yum -y install python-pip
+curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
+python get-pip.py
+pip install packaging
 pip -V
 
 # install git
-sudo yum install git
+yum install git
 
 # install ansible
-sudo yum install ansible
+yum install ansible
 git clone https://github.com/ansible/ansible.git
 cd ./ansible
 make rpm
-sudo rpm -Uvh ./rpm-build/ansible-*.noarch.rpm
+rpm -Uvh ./rpm-build/ansible-*.noarch.rpm
 pip install ansible[azure]
 
 # install nodejs
 curl --silent --location https://rpm.nodesource.com/setup_10.x | sudo bash -
-sudo yum -y install nodejs
+yum -y install nodejs
 
 # install docker
-sudo yum install docker
-sudo service docker stop
-sudo nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
-sudo docker info
+yum install docker
+service docker stop
+nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
+docker info
 
-# install jenkins
-sudo docker pull jenkinsci/blueocean
-sudo docker run -d -p 8093:8080 jenkinsci/blueocean
+#install docker-compose. change version number
+curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+ln -s /usr/local/bin/docker-compose docker-compose
+
+# install docker-compose
+docker pull jenkinsci/blueocean
+docker run -d -p 8093:8080 jenkinsci/blueocean
+
