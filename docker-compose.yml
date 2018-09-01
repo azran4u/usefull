@@ -10,5 +10,5 @@ services:
     environment:
       JENKINS_HOST_HOME: "/data/jenkins"
     ports:
-    - "8080:9001"
-    - "50000:9002"
+    - "9001:8080"
+    - "9002:50000"
