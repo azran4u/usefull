@@ -35,7 +35,7 @@ docker info
 #install docker-compose.yml. change version number
 curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose.yml-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose.yml
 chmod +x /usr/local/bin/docker-compose.yml
-ln -s /usr/local/bin/docker-compose.yml docker-compose.yml
+ln -s /usr/local/bin/docker-compose docker-compose
 
 # install docker-compose.yml
 docker pull jenkinsci/blueocean
